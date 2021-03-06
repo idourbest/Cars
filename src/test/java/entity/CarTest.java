@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Method;
+import java.util.Random;
 
 class CarTest {
 
@@ -14,7 +15,9 @@ class CarTest {
 
     @BeforeEach
     void constructor() {
-        car = new Car(CarModel.JETTA, 2);
+        Random vinGenerator = new Random();
+        long vin = Math.abs(vinGenerator.nextLong());
+        car = new Car(CarModel.JETTA, vin);
         methods = car.getClass().getDeclaredMethods();
     }
 
